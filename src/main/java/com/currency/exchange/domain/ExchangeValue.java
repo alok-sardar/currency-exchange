@@ -14,4 +14,12 @@ public class ExchangeValue {
     private String from;
     private String to;
     private BigDecimal conversionFactor;
+    private int port;
+
+    public ExchangeValue(long id, String from, String to, BigDecimal conversionFactor) {
+        this.id = id;
+        this.from = from;
+        this.to = to;
+        this.conversionFactor = conversionFactor;
+    }
 }
