@@ -1,7 +1,10 @@
 package com.currency.exchange.domain;
 
-import jdk.jfr.DataAmount;
-import lombok.*;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
@@ -9,17 +12,22 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class ExchangeValue {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "currency_from")
     private String from;
+    @Column(name = "currency_to")
     private String to;
-    private BigDecimal conversionFactor;
-    private int port;
+    private BigDecimal conversionMultiple;
+    private Integer port;
 
-    public ExchangeValue(long id, String from, String to, BigDecimal conversionFactor) {
+    public ExchangeValue(long id, String from, String to, BigDecimal conversionMultiple) {
         this.id = id;
         this.from = from;
         this.to = to;
-        this.conversionFactor = conversionFactor;
+        this.conversionMultiple = conversionMultiple;
     }
 }

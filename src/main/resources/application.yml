@@ -1,8 +1,27 @@
 spring:
+  sql:
+    init:
+      data-locations: classpath:schema.sql, classpath:data.sql
+  session:
+    jdbc:
+      initialize-schema: always
   cloud:
     config:
       enabled: false
   application:
     name: currency-exchange
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+  datasource:
+    driverClassName: org.h2.Driver
+    initialize: true
+    url: "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1"
 server:
   port: 8000
+
