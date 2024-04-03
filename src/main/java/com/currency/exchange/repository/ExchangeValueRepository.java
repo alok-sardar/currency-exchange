@@ -9,4 +9,5 @@ public interface ExchangeValueRepository extends JpaRepository<ExchangeValue,Lon
     ExchangeValue findByFromAndTo(String from,String to);
     @Query("SELECT e FROM ExchangeValue e WHERE e.from=:from AND e.to=:to")
     ExchangeValue findRecords(@Param("from")String from, @Param("to")String to);
+    //Hello world
 }

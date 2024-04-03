@@ -1,4 +1,7 @@
 spring:
+  devtools:
+    restart:
+      enabled: true
   sql:
     init:
       data-locations: classpath:schema.sql, classpath:data.sql
@@ -24,4 +27,37 @@ spring:
     url: "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1"
 server:
   port: 8000
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      default-zone: http://localhost:8761
+logging:
+  level:
+    com:
+      netflix:
+        eureka: ERROR
+        discovery: ERROR
+    org:
+      springframework:
+        web: INFO
 
+#resilience4j.retry:
+#  instances:
+#    currency:
+#      maxRetryAttempts: 5
+#      waitDuration: 2s
+#      retryExceptions:
+#        - java.net.ConnectException
+    # Another configuration for another api if we want
+#    backendB:
+#      maxRetryAttempts: 3
+#      waitDuration: 10s
+#      retryExceptions:
+#        - org.springframework.web.client.HttpServerErrorException
+#        - java.io.IOException
+#      ignoreExceptions:
+#        - io.github.robwin.exception.BusinessException
